@@ -214,6 +214,7 @@ class Bat(Actor):
         y_movement = self.move_func()
 
         # Apply y_movement to y position, ensuring bat does not go through the side walls
+        self.x = min(400, max(80, self.x + y_movement))
         self.y = min(400, max(80, self.y + y_movement))
 
         # Choose the appropriate sprite. There are 3 sprites per player - e.g. bat00 is the left-hand player's
@@ -459,7 +460,7 @@ try:
     pygame.mixer.quit()
     pygame.mixer.init(44100, -16, 2, 1024)
 
-    music.play("theme2")
+    music.play("theme")
     music.set_volume(0.3)
 except Exception:
     # If an error occurs (e.g. no sound device), just ignore it
